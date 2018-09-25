@@ -15,7 +15,7 @@ public class ClienteDAO {
 		
 		for(Iterator iterator = depositoDeValores.iterator(); iterator.hasNext();) {
 			Cliente c = (Cliente)iterator.next();
-			double valor = c.getSaldo();
+			double valor = c.getInsercao();
 			valorTotal += valor;
 		}
 		

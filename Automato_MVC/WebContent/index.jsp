@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -26,14 +28,17 @@
 <body>
 
 	<div class="container">
-
+		<br/>
+		<br/>
+		<br/>
+		
 		<h1>Autômato - Máquina de Doces</h1>
 
 		<!-- Default panel contents -->
 		<div class="panel panel-default">
 			<div class="panel-heading">Doces Disponíveis</div>
-			<p>Abaixo os doces disponíveis para compra</p>
-			<p style="float: right;">Seu saldo é: $$$$</p>
+			<p>A seguir os doces disponíveis para comprar, insira as notas abaixo para o autômato habilitar a compra.</p>
+			<p style="float: left;"><b>Seu saldo é: R$ ${saldo}</b></p>
 			<div class="panel-body"></div>
 
 			<!-- Table -->
@@ -46,44 +51,60 @@
 						<th>Retirar Doce</th>
 					<tr>
 				</thead>
+				<form action="controller.do" method="post">
 				<tbody>
 					<tr>
 						<th scope="row">1</th>
 						<td>A</td>
 						<td>R$ 6,00</td>
-						<td><button class="btn btn-default">Retirar</button></td>
+						<td>
+				   		<c:if test="${saldo >= 6}"> 
+							<input type="radio" name="valor" value="1" checked>
+						</c:if>
+						</td>
 					</tr>
 					<tr>
-						<th scope="row">1</th>
+						<th scope="row">2</th>
 						<td>B</td>
 						<td>R$ 7,00</td>
-						<td></td>
+						<td>
+						<c:if test="${saldo >= 7}"> 
+							<input type="radio" name="valor" value="7" checked>
+						</c:if>
+						</td>
 					</tr>
 					<tr>
-						<th scope="row">1</th>
+						<th scope="row">3</th>
 						<td>C</td>
 						<td>R$ 8,00</td>
-						<td></td>
+						<td>
+						<c:if test="${saldo >= 8}"> 
+							<input type="radio" name="valor" value="8" checked>
+						</c:if>
+						</td>
 					</tr>
 				</tbody>
+			
 			</table>
-
+			<p>Clique aqui para retirar seu doce! </p>
+				<button class="btn btn-danger" name="command" value="RetirarDoce">Retirar</button>
+					</form>
 
 		</div>
+		<br/>
+		<br/>
+		<br/>
 		<div class="">
-			<p>Inserir Notas</p>
-			<button class="btn btn-default">Retirar</button>
-			<button class="btn btn-default">Retirar</button>
-			<button class="btn btn-default">Retirar</button>
-
-			<fieldset>
-				<legend>Personalia:</legend>
-				Name: <input type="text"><br>
-				Email: <input type="text"><br>
-				Date of birth: <input type="text">
-			</fieldset>
+			<p><b>Inserir Notas</b></p>
+			<form action="controller.do" method="post">
+				<input type="radio" name="valor" value="1" checked> R$1,00
+				<input type="radio" name="valor" value="2"> R$2,00
+				<input type="radio" name="valor" value="5"> R$5,00 
+				<br/>
+				<br/>
+				<br/>
+			<button class="btn btn-success" name="command" value="AdicionarSaldo">Inserir</button>
 			</form>
-
 		</div>
 	</div>
 	<script src="https://code.jquery.com/jquery-3.3.1.js"

@@ -3,7 +3,9 @@ package model;
 public class Cliente {
 	private int id;
 	private double Saldo;
+	private double insercao;
 	private String tipoMoeda;
+	
 	
 	public int getId() {
 		return id;
@@ -22,5 +24,11 @@ public class Cliente {
 	}
 	public void setTipoMoeda(String tipoMoeda) {
 		this.tipoMoeda = tipoMoeda;
+	}
+	public double getInsercao() {
+		return insercao;
+	}
+	public void setInsercao(double insercao) {
+		this.insercao = insercao;
 	}
 }
